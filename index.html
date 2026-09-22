@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechCare - Patient Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <header class="top-nav">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="TechCare Logo">
+    </div>
+
+    <nav class="nav-links">
+      <a href="#" class="nav-item">
+        <img src="assets/home.svg" alt="Overview">
+        <span>Overview</span>
+      </a>
+      <a href="#" class="nav-item active">
+        <img src="assets/patients.svg" alt="Patients">
+        <span>Patients</span>
+      </a>
+      <a href="#" class="nav-item">
+        <img src="assets/calendar.svg" alt="Schedule">
+        <span>Schedule</span>
+      </a>
+      <a href="#" class="nav-item">
+        <img src="assets/chat.svg" alt="Message">
+        <span>Message</span>
+      </a>
+      <a href="#" class="nav-item">
+        <img src="assets/credit-card.svg" alt="Transactions">
+        <span>Transactions</span>
+      </a>
+    </nav>
+
+    <div class="doctor-profile">
+      <img src="assets/dr-simmons.png" alt="Dr. Simmons" class="doctor-avatar">
+      <div class="doctor-info">
+        <span class="doctor-name">Dr. Simmons</span>
+        <span class="doctor-title">General Practitioner</span>
+      </div>
+      <div class="divider"></div>
+      <button class="icon-btn" aria-label="Settings">
+        <img src="assets/settings.svg" alt="Settings">
+      </button>
+      <button class="icon-btn" aria-label="More Options">
+        <img src="assets/more-vert.svg" alt="More">
+      </button>
+    </div>
+  </header>
+
+  <div class="app-container">
+
+    <aside class="patients-sidebar">
+      <div class="sidebar-header">
+        <h2>Patients</h2>
+        <button class="icon-btn" aria-label="Search Patients">
+          <img src="assets/search.svg" alt="Search">
+        </button>
+      </div>
+      <ul class="patients-list" id="patients-list">
+      </ul>
+    </aside>
+
+    <main class="dashboard-content">
+
+      <section class="card diagnosis-history-card">
+        <h2>Diagnosis History</h2>
+        
+        <div class="bp-chart-container">
+          <div class="bp-chart-main">
+            <div class="bp-chart-header">
+              <h3>Blood Pressure</h3>
+              <div class="timeframe-select">
+                <span>Last 6 months</span>
+                <img src="assets/expand-more.svg" alt="Expand">
+              </div>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="bpChart"></canvas>
+            </div>
+          </div>
+
+          <div class="bp-legend-panel">
+            <div class="legend-item">
+              <div class="legend-header">
+                <span class="dot systolic-dot"></span>
+                <span class="legend-title">Systolic</span>
+              </div>
+              <div class="legend-value" id="systolic-val">160</div>
+              <div class="legend-status">
+                <img src="assets/arrow-up.svg" alt="Higher">
+                <span id="systolic-status">Higher than Average</span>
+              </div>
+            </div>
+
+            <div class="legend-divider"></div>
+
+            <div class="legend-item">
+              <div class="legend-header">
+                <span class="dot diastolic-dot"></span>
+                <span class="legend-title">Diastolic</span>
+              </div>
+              <div class="legend-value" id="diastolic-val">78</div>
+              <div class="legend-status">
+                <img src="assets/arrow-down.svg" alt="Lower">
+                <span id="diastolic-status">Lower than Average</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vitals-grid">
+          <div class="vital-card resp-card">
+            <img src="assets/respiratory.svg" alt="Respiratory Rate Icon" class="vital-icon">
+            <span class="vital-label">Respiratory Rate</span>
+            <span class="vital-value" id="resp-val">20 bpm</span>
+            <span class="vital-status" id="resp-status">Normal</span>
+          </div>
+
+          <div class="vital-card temp-card">
+            <img src="assets/temperature.svg" alt="Temperature Icon" class="vital-icon">
+            <span class="vital-label">Temperature</span>
+            <span class="vital-value" id="temp-val">98.6°F</span>
+            <span class="vital-status" id="temp-status">Normal</span>
+          </div>
+
+          <div class="vital-card heart-card">
+            <img src="assets/heart.svg" alt="Heart Rate Icon" class="vital-icon">
+            <span class="vital-label">Heart Rate</span>
+            <span class="vital-value" id="heart-val">78 bpm</span>
+            <span class="vital-status" id="heart-status">Lower than Average</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card diagnostic-list-card">
+        <h2>Diagnostic List</h2>
+        <div class="table-responsive">
+          <table class="diagnostic-table">
+            <thead>
+              <tr>
+                <th>Problem/Diagnosis</th>
+                <th>Description</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="diagnostic-tbody">
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <aside class="patient-profile-sidebar">
+      <div class="card profile-card">
+        <div class="profile-header">
+          <img src="assets/jessica-taylor.png" alt="Jessica Taylor" id="profile-avatar" class="profile-image">
+          <h2 id="profile-name">Jessica Taylor</h2>
+        </div>
+
+        <div class="profile-details-list">
+          <div class="detail-item">
+            <img src="assets/birth.svg" alt="Date of Birth">
+            <div class="detail-text">
+              <span class="detail-label">Date Of Birth</span>
+              <span class="detail-value" id="profile-dob">August 23, 1996</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <img src="assets/gender.svg" alt="Gender">
+            <div class="detail-text">
+              <span class="detail-label">Gender</span>
+              <span class="detail-value" id="profile-gender">Female</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <img src="assets/phone.svg" alt="Contact Info">
+            <div class="detail-text">
+              <span class="detail-label">Contact Info.</span>
+              <span class="detail-value" id="profile-phone">(415) 555-1234</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <img src="assets/phone.svg" alt="Emergency Contact">
+            <div class="detail-text">
+              <span class="detail-label">Emergency Contacts</span>
+              <span class="detail-value" id="profile-emergency">(415) 555-5678</span>
+            </div>
+          </div>
+
+          <div class="detail-item">
+            <img src="assets/insurance.svg" alt="Insurance Provider">
+            <div class="detail-text">
+              <span class="detail-label">Insurance Provider</span>
+              <span class="detail-value" id="profile-insurance">Sunrise Health Assurance</span>
+            </div>
+          </div>
+        </div>
+
+        <button class="cta-btn">Show All Information</button>
+      </div>
+
+      <div class="card lab-results-card">
+        <h2>Lab Results</h2>
+        <ul class="lab-results-list" id="lab-results-list">
+        </ul>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
