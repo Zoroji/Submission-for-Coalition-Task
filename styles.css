@@ -9,12 +9,11 @@ body {
   background-color: #F6F7F8;
   color: #072635;
   padding: 18px;
-  -webkit-font-smoothing: antialiased;
 }
 
 .top-nav {
   height: 72px;
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   border-radius: 70px;
   display: flex;
   align-items: center;
@@ -44,7 +43,6 @@ body {
   color: #072635;
   padding: 11px 16px;
   border-radius: 41px;
-  transition: background-color 0.2s ease;
 }
 
 .nav-item.active {
@@ -94,7 +92,7 @@ body {
 }
 
 .icon-btn {
-  background: none;
+  background: transparent;
   border: none;
   cursor: pointer;
   padding: 6px;
@@ -112,7 +110,7 @@ body {
 }
 
 .card {
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   border-radius: 16px;
   padding: 20px;
 }
@@ -125,7 +123,7 @@ body {
 }
 
 .patients-sidebar {
-  background: #FFFFFF;
+  background-color: #FFFFFF;
   border-radius: 16px;
   padding: 20px 0;
 }
@@ -144,7 +142,7 @@ body {
 }
 
 .patients-list {
-  list-style: none;
+  list-style-type: none;
   max-height: 1000px;
   overflow-y: auto;
 }
@@ -154,7 +152,7 @@ body {
 }
 
 .patients-list::-webkit-scrollbar-thumb {
-  background: #E7E7E7;
+  background-color: #E7E7E7;
   border-radius: 3px;
 }
 
@@ -164,7 +162,6 @@ body {
   justify-content: space-between;
   padding: 16px 20px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .patient-item.active {
@@ -208,7 +205,7 @@ body {
 }
 
 .bp-chart-container {
-  background: #F4F0FE;
+  background-color: #F4F0FE;
   border-radius: 16px;
   padding: 16px 24px;
   display: flex;
@@ -372,7 +369,7 @@ body {
 }
 
 .diagnostic-table th {
-  background: #F6F7F8;
+  background-color: #F6F7F8;
   font-size: 14px;
   font-weight: 700;
   color: #072635;
@@ -471,7 +468,7 @@ body {
 .cta-btn {
   width: 203px;
   height: 41px;
-  background: #01F0D0;
+  background-color: #01F0D0;
   border: none;
   border-radius: 41px;
   font-family: 'Manrope', sans-serif;
@@ -479,15 +476,10 @@ body {
   font-weight: 700;
   color: #072635;
   cursor: pointer;
-  transition: opacity 0.2s ease;
-}
-
-.cta-btn:hover {
-  opacity: 0.9;
 }
 
 .lab-results-list {
-  list-style: none;
+  list-style-type: none;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -505,7 +497,6 @@ body {
   font-weight: 400;
   color: #072635;
   cursor: pointer;
-  transition: background-color 0.2s ease;
 }
 
 .lab-item:hover,
