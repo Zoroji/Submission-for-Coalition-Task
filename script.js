@@ -1,11 +1,11 @@
 var bpChart = null;
 
-window.onload = function () {
+window.onload = function() {
   var req = new XMLHttpRequest();
   req.open('GET', 'https://fedskillstest.coalitiontechnologies.workers.dev', true);
   req.setRequestHeader('Authorization', 'Basic ' + btoa('coalition:skills-test'));
 
-  req.onload = function () {
+  req.onload = function() {
     if (req.status >= 200 && req.status < 300) {
       var list = JSON.parse(req.responseText);
 
@@ -15,15 +15,15 @@ window.onload = function () {
         for (var i = 0; i < list.length; i++) {
           var item = list[i];
           var cls = item.name === 'Jessica Taylor' ? 'patient-item active' : 'patient-item';
-          str + = '<li class = "' + cls + '">';
-          str + = '<div class = "patient-main-info">';
-          str + = '<img src = "' + item.profile_picture + '" alt = "' + item.name + '" class = "patient-avatar" onerror = "this.src = \'assets/jessica-taylor.png\'">';
-          str + = '<div class = "patient-text">';
-          str + = '<span class = "patient-name">' + item.name + '</span>';
-          str + = '<span class = "patient-sub">' + item.gender + ', ' + item.age + '</span>';
-          str + = '</div></div>';
-          str + = '<button class = "icon-btn" aria-label = "Options"><img src = "assets/more-horiz.svg" alt = "More"></button>';
-          str + = '</li>';
+          str += '<li class="' + cls + '">';
+          str += '<div class="patient-main-info">';
+          str += '<img src="' + item.profile_picture + '" alt="' + item.name + '" class="patient-avatar" onerror="this.src=\'assets/jessica-taylor.png\'">';
+          str += '<div class="patient-text">';
+          str += '<span class="patient-name">' + item.name + '</span>';
+          str += '<span class="patient-sub">' + item.gender + ', ' + item.age + '</span>';
+          str += '</div></div>';
+          str += '<button class="icon-btn" aria-label="Options"><img src="assets/more-horiz.svg" alt="More"></button>';
+          str += '</li>';
         }
         navEl.innerHTML = str;
       }
@@ -124,8 +124,8 @@ window.onload = function () {
           }
 
           if (latestRecord.temperature) {
-            setVal('value-val', latestRecord.temperature.value + '°F');
-            setVal('value-status', latestRecord.temperature.levels);
+            setVal('temp-val', latestRecord.temperature.value + '°F');
+            setVal('temp-status', latestRecord.temperature.levels);
           }
 
           if (latestRecord.heart_rate) {
@@ -140,7 +140,7 @@ window.onload = function () {
           var tHtml = '';
           for (var x = 0; x < tableList.length; x++) {
             var row = tableList[x];
-            tHtml + = '<tr><td>' + row.name + '</td><td>' + row.description + '</td><td>' + row.status + '</td></tr>';
+            tHtml += '<tr><td>' + row.name + '</td><td>' + row.description + '</td><td>' + row.status + '</td></tr>';
           }
           tbodyEl.innerHTML = tHtml;
         }
@@ -151,7 +151,7 @@ window.onload = function () {
           var lHtml = '';
           for (var y = 0; y < labResultsArr.length; y++) {
             var activeClass = y === 1 ? 'lab-item active' : 'lab-item';
-            lHtml + = '<li class = "' + activeClass + '"><span>' + labResultsArr[y] + '</span><button class = "icon-btn" aria-label = "Download"><img src = "assets/download.svg" alt = "Download"></button></li>';
+            lHtml += '<li class="' + activeClass + '"><span>' + labResultsArr[y] + '</span><button class="icon-btn" aria-label="Download"><img src="assets/download.svg" alt="Download"></button></li>';
           }
           labsContainer.innerHTML = lHtml;
         }
@@ -159,7 +159,7 @@ window.onload = function () {
     }
   };
 
-  req.onerror = function () {
+  req.onerror = function() {
     console.log('XHR Connection Error');
   };
 
